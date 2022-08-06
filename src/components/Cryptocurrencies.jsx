@@ -19,9 +19,9 @@ const Cryptocurrencies = ({simplified}) => {
   if( isFetching ) return <div>Loading.........</div>
   return (
     <>
-    <div className="search-crypto">
+    { !simplified && <div className="search-crypto">
       <Input placeholder='Search Crypto Currency' onChange={(e) => setSearchTerm(e.target.value)}/>
-    </div>
+    </div> }
 
     <div>
       <Row gutter={[32,32]} className="crypto-card-container">
