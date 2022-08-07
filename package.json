@@ -1,6 +1,7 @@
 {
-  "homepage": "https://robinBisht.github.io/Coinverse",
+  
   "name": "cryptoapp",
+  "homepage": "https://robinBisht.github.io/Coinverse/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
