@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Coinverse/static/css/main.972f0154.css",
+    "main.js": "/Coinverse/static/js/main.2159f922.js",
+    "static/media/cryptocurrency.png": "/Coinverse/static/media/cryptocurrency.1548aced3f0605895bac.png",
+    "index.html": "/Coinverse/index.html",
+    "main.972f0154.css.map": "/Coinverse/static/css/main.972f0154.css.map",
+    "main.2159f922.js.map": "/Coinverse/static/js/main.2159f922.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.972f0154.css",
+    "static/js/main.2159f922.js"
+  ]
+}
