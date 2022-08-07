@@ -6,14 +6,18 @@ import {Col,Row,Typography,Select} from 'antd'
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 
 import { useGetCryptoDetailsQuery } from '../services/cryptoAPI';
+import { useGetCryptoHistoryQuery } from '../services/cryptoAPI';
+
+import LineChart from './LineChart';
 
 const {Title,Text} = Typography 
 const {Option} = Select;
 
 const CryptoDetails = () => {
   const {coinId} = useParams();
-  const {timePeriod,setTimePeriod} = useState('7d')
+  const [timePeriod,setTimePeriod] = useState('7d')
   const {data,isFetching} = useGetCryptoDetailsQuery(coinId);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timePeriod });
   
   const cryptoDetails = data?.data?.coin
 
@@ -55,6 +59,7 @@ const CryptoDetails = () => {
             <Option key={date}>{date}</Option>
           ))}
       </Select>
+      <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName ={cryptoDetails?.name}/>
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className='coin-value-statistics-heading'>
@@ -102,8 +107,8 @@ const CryptoDetails = () => {
           <Title level={3} className="coin-details-heading">
             {cryptoDetails.name} Links
           </Title>
-          { cryptoDetails.links.map( (link) => (
-            <Row className="coin-link" key={link.name}>
+          { cryptoDetails.links.map( (link,i) => (
+            <Row className="coin-link" key={i}>
                <Title level={5} className="link-name">{link.name.slice(0,-4).toUpperCase()}
                </Title>
                <a href={link.url} target="_blank">{link.name}</a>
